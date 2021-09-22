@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity() {
             return false
         }
         var prim = true
-        for (i in 1..(szam/2))
+        for (i in 1..(Math.sqrt(szam as Double)as Int))
         {
-            if(szam%i==0)
+            if(szam as Int % i==0)
             {
                 prim = false
             }
