@@ -7,15 +7,15 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
+class MainLandscapeActivity : AppCompatActivity() {
 
     private lateinit var szoveg: TextView
     private lateinit var plusz: Button
     private lateinit var minusz: Button
 
     private fun iranyhozIgazodik() {
-        if (this.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            val intent = Intent(this, MainLandscapeActivity::class.java)
+        if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("Allas", Fuggvenyek.jelenAllas(szoveg))
             startActivity(intent)
         }
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_landscape)
         init()
         val passzoltAllas = intent.getIntExtra("Allas", 0)
         if (passzoltAllas != 0) {
@@ -48,9 +48,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        szoveg = findViewById(R.id.Szam)
-        plusz = findViewById(R.id.Plusz)
-        minusz = findViewById(R.id.Minusz)
+        szoveg = findViewById(R.id.lSzam)
+        plusz = findViewById(R.id.lPlusz)
+        minusz = findViewById(R.id.lMinusz)
     }
+
 
 }
