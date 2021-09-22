@@ -1,5 +1,6 @@
 package com.example.clickcounter
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,6 +46,24 @@ class MainActivity : AppCompatActivity() {
         else{
             szoveg.setTextColor(Color.rgb(0,255,56))
         }
+        if(primSzam(jelenAllas()))
+        {
+            szoveg.setTextColor(Color.rgb(255,255,255))
+        }
         return true
+    }
+    fun primSzam(szam:Int): Boolean{
+        if (szam<2){
+            return false
+        }
+        var prim = true
+        for (i in 1..(szam/2))
+        {
+            if(szam%i==0)
+            {
+                prim = false
+            }
+        }
+        return prim
     }
 }
