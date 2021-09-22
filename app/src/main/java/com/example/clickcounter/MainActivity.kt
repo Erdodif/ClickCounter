@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
     lateinit var szoveg : TextView
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         if (allas == 0){
             szoveg.setTextColor(Color.rgb(0,56,255))
         }
-        else if(allas > 0){
+        else if(allas < 0){
             szoveg.setTextColor(Color.rgb(255,56,0))
         }
         else{
@@ -52,18 +53,18 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-    fun primSzam(szam:Int): Boolean{
+    private fun primSzam(szam:Int): Boolean{
         if (szam<2){
             return false
         }
-        var prim = true
-        for (i in 1..(Math.sqrt(szam as Double)as Int))
+        var prim = 0
+        for (i in 1..(sqrt(szam.toDouble()).toInt()))
         {
             if(szam as Int % i==0)
             {
-                prim = false
+                prim++;
             }
         }
-        return prim
+        return prim == 1;
     }
 }
